@@ -1,0 +1,86 @@
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+* {
+  color: $neutral-600;
+  font-size: 13px;
+  font-family: 'Open Sans';
+}  
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $bg;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.anticon {
+  font-size: 16px!important;
+  svg {
+    path {
+      stroke-width: 40!important;
+      stroke: currentColor !important;
+    }
+  }
+}
+
+// Tabler Icons font-family for SVG icons (if needed)
+.tabler-icon {
+  font-family: 'Tabler Icons', sans-serif;
+}
+
+// Global scrollbar style: only visible on hover/context, customizable
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width:thin;
+    scrollbar-color: $neutral-200;
+    border-color: $white;
+    border: unset;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 3px;
+    border: unset;
+    border-color: $white;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: $white;
+    border: unset;
+    border-color: $white;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: $neutral-200;
+    border-radius: 10px;
+    border: unset;
+    border-color: $white;
+  }

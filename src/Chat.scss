@@ -1,0 +1,229 @@
+@import './variables.scss';
+
+
+/*Estrutura*/
+.chat-onmaps {
+  margin: auto;
+  width: 360px;
+  height: 500px;
+  background-color: $white;
+  box-shadow: $large-shadow;
+  border-radius: $radius;
+  position: relative;
+  border-radius: 8px !important;
+  display: flex;
+  flex-direction: column;
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    background: $secondary;
+    position: relative;
+    background-color: $white;
+    padding: $padding;
+    border-radius: 8px !important;
+
+    .chat-chevron {
+      margin-left: auto;
+      font-size: 1.3rem;
+      color: $neutral-600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+  }
+
+  .chat-footer {
+    display: flex;
+    align-items: center;
+
+    .chat-input-wrapper {
+      width: calc(100% - 32px);
+      position: relative;
+      padding: 16px;
+      display: flex;
+      .chat-input {
+        width: -webkit-fill-available;
+        border: 1px solid $border;
+        border-radius: $radius;
+        padding: 12px;
+        padding-right: 32px;
+        background: #fff;
+        min-height: 42px;
+        cursor: text;
+        line-height: 1.5;
+        height: 64px;
+        &:focus {
+          outline: none;
+          border-color: darken($border, 10%);
+        }
+
+        .chat-tag {
+          background-color: $secondary;
+          color: $primary;
+          padding: 2px 4px;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: darken($secondary, 5%);
+          }
+        }
+
+      }
+
+      .chat-send-btn {
+        background: transparent;
+        border: none;
+        border-radius: 8px;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.3rem;
+        padding: 0;
+        flex-shrink: 0;
+        position: absolute;
+        top: 30px;
+        right: 26px;
+        border: 1px solid $neutral-500;
+        border-radius: 100px;
+        &:hover {
+          background: darken($neutral-100, 10%);
+        }
+
+        span {
+          svg {
+            path {
+              color: $neutral-500;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+}
+
+/*Visual das mensagens*/
+.message-log {
+  flex: 1;
+  padding: 20px 0;
+  overflow-y: auto;
+  display: flex;
+  padding: $padding;
+  flex-direction: column;
+
+  > :first-child {
+    margin-top: auto;
+  }
+
+  .user-message {
+    justify-content: flex-end;
+    color: $text-dark;
+    align-self: flex-end;
+    background: $neutral-100;
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+
+    p {
+      margin: 0;
+      width: 100%;
+
+    }
+  }
+
+  .ai-message {
+    background-color: $white;
+    width: 100%;
+    max-width: unset;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    color: $text-light;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+
+    .chat-ai-icon {
+      margin-right: 8px;
+      margin-bottom: auto;
+    }
+
+    .ai-message-markdown {
+      margin-top: 0;
+      width: 100%;
+
+      p {
+        margin: 0;
+        width: 100%;
+
+      }
+    }
+
+    .ai-typing-dots {
+      display: inline-block;
+      margin-left: 4px;
+      letter-spacing: 2px;
+      animation: blink 1.2s infinite steps(1, end);
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+  }
+
+}
+
+.chat-suggestions {
+  position: absolute;
+  left: 0;
+  right: 60px;
+  bottom: 48px;
+  z-index: 10;
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  max-height: 180px;
+  overflow-y: auto;
+  font-size: 1rem;
+
+  li {
+    padding: 6px 18px;
+    cursor: pointer;
+    color: $primary;
+    background: none;
+    transition: background 0.15s;
+    border: none;
+    outline: none;
+    font-weight: 500;
+  }
+  li.selected,
+  li:hover {
+    background: $secondary;
+    color: $primary;
+  }
+}
