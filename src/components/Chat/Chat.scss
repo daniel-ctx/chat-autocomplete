@@ -1,0 +1,44 @@
+@import '../../styles/variables.scss';
+
+
+/*Estrutura*/
+.chat-onmaps {
+  margin: auto;
+  max-width: 380px;
+  min-width: 380px;
+  height: 540px;
+  background-color: $neutral-50;
+  box-shadow: $large-shadow;
+  border-radius: $radius;
+  position: relative;
+  border-radius: 8px !important;
+  display: flex;
+  flex-direction: column;
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    background: $neutral-50;
+    position: relative;
+    background-color: $neutral-50;
+    padding: $padding;
+    border-radius: 8px !important;
+
+    .chat-chevron {
+      margin-left: auto;
+      font-size: 1.3rem;
+      color: $neutral-600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .chat-footer {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+

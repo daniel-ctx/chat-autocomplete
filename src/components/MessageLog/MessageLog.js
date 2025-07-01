@@ -1,4 +1,5 @@
 import React from 'react';
+import './MessageLog.scss';
 import { IconSparkles } from '@tabler/icons-react';
 import { marked } from 'marked';
 

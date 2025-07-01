@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { RightOutlined } from '@ant-design/icons';
-import logo from './img/logo.svg';
+import logo from '../../img/logo.svg';
 import './Chat.scss';
 import aiResponses from './aiResponses';
 
-import MessageLog from './MessageLog';
-import ChatPromptInput from './ChatPromptInput';
+import MessageLog from '../MessageLog';
+import ChatPromptInput from '../ChatPromptInput';
 import { useRef as useReactRef } from 'react';
 
 

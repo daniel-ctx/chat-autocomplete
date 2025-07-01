@@ -43,5 +43,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://danielgithub.github.io/chat-autocomplete"
+  "homepage": "https://danielgithub.github.io/chat-autocomplete",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }

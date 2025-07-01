@@ -1,0 +1,21 @@
+@import './variables.scss';
+
+.text-description {
+    .point {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 1.5em;
+        p {
+            display: inline-block;
+            text-align: left;
+            margin-top: 2px;
+        }
+        svg {
+            margin-right: 8px;
+            min-width: 22px!important;
+            max-width: 22px!important;
+            height: 22px!important;
+        }
+    }
+}

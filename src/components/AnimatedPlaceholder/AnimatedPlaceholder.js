@@ -1,5 +1,6 @@
 // AnimatedPlaceholder.js
 import React, { useEffect, useState } from 'react';
+import './AnimatedPlaceholder.scss';
 
 export default function AnimatedPlaceholder({ messages, inputFocused, inputHtml }) {
   const [placeholderIdx, setPlaceholderIdx] = useState(0);

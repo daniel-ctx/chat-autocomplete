@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import './ChatPromptInput.scss';
 import { IconAt, IconPlayerStop, IconX } from '@tabler/icons-react';
 import { ArrowUpOutlined } from '@ant-design/icons';
-import AnimatedPlaceholder from './AnimatedPlaceholder';
+import AnimatedPlaceholder from '../AnimatedPlaceholder';
 
 const BASE_SUGGESTIONS = [
   'areas_quentes',
@@ -71,9 +71,40 @@ export default function ChatPromptInput({ value, onChange, onSend, onInsertBase,
     return selectedTag !== null;
   }
 
+  // Verifica se o texto digitado é uma referência à tag já selecionada
+  function isReferencingSelectedTag(text) {
+    if (!selectedTag) return false;
+    const match = text.match(/@([\w\u00C0-\u017F-]*)$/);
+    if (!match) return false;
+    return match[1].toLowerCase() === selectedTag.toLowerCase();
+  }
+
   // Detecta @ e abre dropdown (apenas se não houver tag)
   function handleInput(e) {
     if (hasTag()) {
+      const textUntilCursor = inputRef.current.innerText;
+      const match = textUntilCursor.match(/@([\w\u00C0-\u017F-]*)$/);
+      if (match && selectedTag) {
+        if (selectedTag.toLowerCase().startsWith(match[1].toLowerCase())) {
+          setShowDropdown(true);
+          setFilteredBases([selectedTag]);
+          setSelectedIdx(0);
+          if (onChange) onChange(inputRef.current.innerText);
+          setHasText(!!inputRef.current.innerText.trim() || selectedTag !== null);
+          return;
+        } else if (match[1].length > 0) {
+          // Se digitou algo diferente, mostra tooltip
+          setShowDropdown(false);
+          setFilteredBases(BASE_SUGGESTIONS);
+          setSelectedIdx(0);
+          if (onChange) onChange(inputRef.current.innerText);
+          setHasText(!!inputRef.current.innerText.trim() || selectedTag !== null);
+          setTooltip(true);
+          clearTimeout(tooltipTimeoutRef.current);
+          tooltipTimeoutRef.current = setTimeout(() => setTooltip(false), 2000);
+          return;
+        }
+      }
       setShowDropdown(false);
       setFilteredBases(BASE_SUGGESTIONS);
       setSelectedIdx(0);
@@ -160,6 +191,14 @@ export default function ChatPromptInput({ value, onChange, onSend, onInsertBase,
   // Seleciona base
   function handleSelectBase(base) {
     const cameFromDropdown = showDropdown;
+    // Se já existe contexto e tentar selecionar outra base, mostra tooltip
+    if (selectedTag && base.toLowerCase() !== selectedTag.toLowerCase()) {
+      setTooltip(true);
+      clearTimeout(tooltipTimeoutRef.current);
+      tooltipTimeoutRef.current = setTimeout(() => setTooltip(false), 2000);
+      setShowDropdown(false);
+      return;
+    }
     setShowDropdown(false);
     setSelectedTag(base);
     setHasText(!!getPlainText().trim() || base !== null);
@@ -312,7 +351,7 @@ export default function ChatPromptInput({ value, onChange, onSend, onInsertBase,
             </button>
           )}
           <button
-            className={`chat-send-btn${hasText && !aiTyping ? ' active' : ''}`}
+            className={`chat-send-btn${hasText && !aiTyping ? ' active' : ''}${aiTyping ? ' loading' : ''}`}
             type="button"
             onClick={() => {
               if (aiTyping) {
@@ -351,6 +390,7 @@ export default function ChatPromptInput({ value, onChange, onSend, onInsertBase,
       )}
       {showDropdown && (
         <div className="chat-suggestions-dropdown">
+          <h3>Bases disponíveis</h3>
           <ul>
             {filteredBases.length === 0 ? (
               <li className="no-suggestion">Resultado não encontrado</li>
