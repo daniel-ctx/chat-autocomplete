@@ -25,6 +25,7 @@ export default function ChatPromptInput({ value, onChange, onSend, onInsertBase,
   const [tooltip, setTooltip] = useState(false);
   const tooltipTimeoutRef = useRef();
   const [selectedTag, setSelectedTag] = useState(null);
+  const itemRefs = useRef([]);
 
   // Atualiza value externo e estado de texto
   useEffect(() => {
@@ -309,6 +310,12 @@ export default function ChatPromptInput({ value, onChange, onSend, onInsertBase,
     return '';
   }
 
+  useEffect(() => {
+    if (showDropdown && itemRefs.current[selectedIdx]) {
+      itemRefs.current[selectedIdx].scrollIntoView({ block: 'nearest' });
+    }
+  }, [selectedIdx, showDropdown]);
+
   return (
     <div className="chat-prompt-input-wrapper" style={{ position: 'relative' }}>
       {tooltip && (
@@ -397,6 +404,7 @@ export default function ChatPromptInput({ value, onChange, onSend, onInsertBase,
             ) : (
               filteredBases.map((base, i) => (
                 <li
+                  ref={el => itemRefs.current[i] = el}
                   key={base}
                   className={(hoveredIdx === i || (hoveredIdx === null && selectedIdx === i)) ? 'selected' : ''}
                   onMouseDown={e => e.preventDefault()}
