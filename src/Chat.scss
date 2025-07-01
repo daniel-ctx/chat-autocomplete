@@ -4,9 +4,10 @@
 /*Estrutura*/
 .chat-onmaps {
   margin: auto;
-  width: 380px;
+  max-width: 380px;
+  min-width: 380px;
   height: 540px;
-  background-color: $white;
+  background-color: $neutral-50;
   box-shadow: $large-shadow;
   border-radius: $radius;
   position: relative;
@@ -17,9 +18,9 @@
   .chat-header {
     display: flex;
     align-items: center;
-    background: $secondary;
+    background: $neutral-50;
     position: relative;
-    background-color: $white;
+    background-color: $neutral-50;
     padding: $padding;
     border-radius: 8px !important;
 
@@ -31,201 +32,23 @@
       display: flex;
       align-items: center;
     }
-
   }
 
   .chat-footer {
     display: flex;
     align-items: center;
-
-    .chat-input-wrapper {
-      width: calc(100% - 32px);
-      position: relative;
-      padding: 16px;
-      display: flex;
-      .chat-input {
-        width: -webkit-fill-available;
-        height: 100px;
-        border: 1px solid $border;
-        border-radius: $radius;
-        padding: 12px;
-        background: #fff;
-        min-height: 42px;
-        max-height: 120px;
-        cursor: text;
-        line-height: 1.5;
-        overflow-y: auto;
-        word-break: break-word;
-        box-sizing: border-box;
-        &::after {
-          position: absolute;
-          content: '';
-          background-color: $white;
-          width: calc(100% - 50px);
-          height: 32px;
-          bottom: 17px;
-          left: 20px;
-          border-bottom-right-radius: 8px;
-          border-bottom-left-radius: 8px;
-        }
-        &:focus {
-          outline: none;
-          border-color: darken($border, 10%);
-        }
-
-        .chat-tag {
-          background-color: $secondary;
-          color: $primary;
-          padding: 2px 4px;
-          border-radius: 4px;
-          cursor: pointer;
-
-          &:hover {
-            background-color: darken($secondary, 5%);
-          }
-        }
-
-      }
-
-      .chat-send-btn {
-        background: transparent;
-        border: none;
-        border-radius: 8px;
-        height: 20px;
-        width: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 1.3rem;
-        padding: 0;
-        flex-shrink: 0;
-        position: absolute;
-        bottom: 24px;
-        right: 24px;
-        border: 1px solid $neutral-500;
-        border-radius: 100px;
-        &:hover {
-          background: darken($neutral-100, 10%);
-        }
-
-        span {
-          svg {
-            path {
-              color: $neutral-500;
-            }
-          }
-        }
-      }
-      .chat-add-context {
-        width: auto;
-        border-radius: 4px;
-        background-color: $neutral-200;
-        color: $neutral-500;
-        font-weight: 600;
-        position: absolute;
-        font-size: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        bottom: 26px;
-        padding: 2px 6px;
-        //border: 1px solid $neutral-500;
-        left: 26px;
-        cursor: pointer;
-        svg {
-          width: 12px;
-          height: 12px;
-          margin-right: 4px;
-          path {
-            color: $neutral-500;
-          }
-        }
-      }
-    }
-
-
-  }
-
-}
-
-
-.chat-suggestions {
-  position: absolute;
-  z-index: 10;
-  background: #fff;
-  border: 1px solid $border;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  margin: 0;
-  padding: 4px 0;
-  list-style: none;
-  font-size: 1rem;
-
-  li {
-    padding: 6px 18px;
-    cursor: pointer;
-    color: $primary;
-    background: none;
-    transition: background 0.15s;
-    border: none;
-    outline: none;
-    font-weight: 500;
-  }
-  li.selected,
-  li:hover {
-    background: $secondary;
-    color: $primary;
   }
 }
 
-// Dropdown de sugestões de tags
-.chat-suggestions-dropdown {
-  position: absolute;
-  z-index: 1000;
-  background: #fff;
-  border: 1px solid $border;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 0;
-  margin-top: 0;
-  min-width: 180px;
-  width: 100%;
-  max-height: 160px;
-  overflow-y: auto;
-  right: 16px!important;
-  left: unset!important;
-  bottom: 120px;
-  top: unset!important;
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    padding: 8px 18px;
-    cursor: pointer;
-    font-weight: 400;
-    color: $neutral-600;
-    border-radius: 6px;
-    background: none;
-    transition: background 0.15s;
-    &:hover, &.selected {
-      background: $secondary;
-      font-weight: 600;
-    }
-  }
-}
+
 
 // Ícone de @ ao lado do input
 .chat-input-placeholder {
   position: absolute;
-  left: 26px;
+  left: 10px;
   max-width: 306px;
-  top: 40px;
+  top: 10px;
   height: 32px;
-  transform: translateY(-50%);
   color: $neutral-500;
   opacity: 0.7;
   font-size: 13px;
@@ -250,7 +73,7 @@
 
   .user-message {
     justify-content: flex-end;
-    color: $text-dark;
+    color: $neutral-600;
     align-self: flex-end;
     background: $neutral-100;
     border-radius: 8px;
@@ -269,13 +92,13 @@
   }
 
   .ai-message {
-    background-color: $white;
+    background-color: $neutral-50;
     width: 100%;
     max-width: unset;
     display: flex;
     box-sizing: border-box;
     padding: 0;
-    color: $text-light;
+    color: $neutral-500;
     align-self: flex-start;
     display: flex;
     align-items: center;
@@ -300,7 +123,6 @@
     .ai-typing-dots {
       display: inline-block;
       margin-left: 4px;
-      letter-spacing: 2px;
       animation: blink 1.2s infinite steps(1, end);
     }
 

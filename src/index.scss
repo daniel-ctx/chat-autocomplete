@@ -5,7 +5,7 @@
   color: $neutral-600;
   font-size: 13px;
   font-family: 'Open Sans';
-}  
+}
 
 body {
   margin: 0;
@@ -21,17 +21,22 @@ code {
     monospace;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: $bg;
+  background: $bg;
+}
+
+#root {
+  width: 100%;
 }
 
 body {
   position: relative;
-  width: 100%;
+  min-width: 100%;
   min-height: 100vh;
   height: 100%;
   display: flex;
@@ -41,10 +46,11 @@ body {
 }
 
 .anticon {
-  font-size: 16px!important;
+  font-size: 16px !important;
+
   svg {
     path {
-      stroke-width: 40!important;
+      stroke-width: 40 !important;
       stroke: currentColor !important;
     }
   }
@@ -57,30 +63,68 @@ body {
 
 // Global scrollbar style: only visible on hover/context, customizable
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width:thin;
-    scrollbar-color: $neutral-200;
-    border-color: $white;
-    border: unset;
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $neutral-200;
+  border-color: $neutral-50;
+  border: unset;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 3px;
+  border: unset;
+  border-color: $neutral-50;
+}
+
+*::-webkit-scrollbar-track {
+  background: $neutral-50;
+  border: unset;
+  border-color: $neutral-50;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $neutral-200;
+  border-radius: 10px;
+  border: unset;
+  border-color: $neutral-50;
+}
+
+
+.main {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+
+  .text-description {
+    max-width: 460px;
+    display: flex;
+    justify-content: center;
   }
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 3px;
-    border: unset;
-    border-color: $white;
+  .content {
+    margin-left: 5rem;
   }
+}
 
-  *::-webkit-scrollbar-track {
-    background: $white;
-    border: unset;
-    border-color: $white;
-  }
+h1,
+h2 {
+  font-weight: bold;
+  width: auto;
+  line-height: 1.2;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: $neutral-200;
-    border-radius: 10px;
-    border: unset;
-    border-color: $white;
-  }
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+p {
+  width: auto;
+  margin-bottom: 1em;
+}
