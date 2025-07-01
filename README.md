@@ -1,2 +1,2 @@
 Chat automcomplete UX
-https://daniel-design-ctx.github.io/chat-autocomplete/
+https://daniel-ctx.github.io/chat-autocomplete/
